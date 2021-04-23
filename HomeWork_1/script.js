@@ -1,4 +1,4 @@
-const askName = 'Hello! What is your name?';
+const askName = 'What is your name?';
 let name = prompt(askName);
-let greeting = 'Hello' + ' ' + name + ', ' + 'nice to meet you !';
+let greeting = 'Hello,' + ' ' + name + '! ' + 'How are you ?';
 alert(greeting);
