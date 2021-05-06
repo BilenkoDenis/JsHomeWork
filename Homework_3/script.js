@@ -1,31 +1,21 @@
-function getOperator() {
+function getOperator(text) {
     let operator;
 
     do {
-        operator = prompt('Please choose operator ( + - / *)')
+        operator = prompt(text)
     }while (operator !== '+' && operator !== '-' && operator !== '/' && operator !== '*');
 
     return operator;
 }
 
-function getNumberA() {
-    let numberA;
+function getNumber(text) {
+    let result;
 
     do {
-        numberA = +prompt('Please enter number A')
-    }while (isNaN(numberA));
+        result = +prompt(text);
+    }while (isNaN(result));
 
-    return numberA;
-}
-
-function getNumberB() {
-    let numberB;
-
-    do {
-        numberB = +prompt('Please enter number B')
-    }while (isNaN(numberB));
-
-    return numberB;
+    return result;
 }
 
 function calculator(operator, numberA, numberB) {
@@ -49,4 +39,7 @@ function calculator(operator, numberA, numberB) {
     return alert(`${numberA} ${operator} ${numberB} = ${result}`);
 }
 
-calculator(getOperator(),getNumberA(),getNumberB());
+const operator = getOperator('Please choose operator ( + - / *)');
+const numberA = getNumber('Enter number A');
+const numberB = getNumber('Enter number B');
+calculator(operator, numberA, numberB);
