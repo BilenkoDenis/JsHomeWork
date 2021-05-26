@@ -1,12 +1,12 @@
 function createCalculator(num) {
-    let firstOperand = num;
+    let result = num;
 
     return {
-        sum: (operand) => firstOperand = firstOperand + operand,
-        sub: (operand) => firstOperand = firstOperand - operand,
-        mult: (operand) => firstOperand = firstOperand * operand,
-        div: (operand) => firstOperand = firstOperand / operand,
-        set: (operand) => firstOperand = operand
+        sum: (operand) => result = result + operand,
+        sub: (operand) => result = result - operand,
+        mult: (operand) => result = result * operand,
+        div: (operand) => result = result / operand,
+        set: (operand) => result = operand
     }
 }
 const calc = createCalculator(10);
