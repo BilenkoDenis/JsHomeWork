@@ -2,10 +2,10 @@ function createCalculator(num) {
     let result = num;
 
     return {
-        sum: (operand) => result = result + operand,
-        sub: (operand) => result = result - operand,
-        mult: (operand) => result = result * operand,
-        div: (operand) => result = result / operand,
+        sum: (operand) => result += operand,
+        sub: (operand) => result -= operand,
+        mult: (operand) => result *= operand,
+        div: (operand) => result /= operand,
         set: (operand) => result = operand
     }
 }
