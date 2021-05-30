@@ -1,52 +1,18 @@
 const actions = {
-    '+': function (operands) {
-        return operands.reduce((acc, num) => acc + num);
-    },
-    '-': function (operands) {
-        return operands.reduce((acc, num) => acc - num);
-    },
-    '*': function (operands) {
-        return operands.reduce((acc, num) => acc * num);
-    },
-    '/': function (operands) {
-        return operands.reduce((acc, num) => acc / num);
-    }
+    '+': (operands) => operands.reduce((acc, num) => acc + num),
+    '-': (operands) => operands.reduce((acc, num) => acc - num),
+    '*': (operands) => operands.reduce((acc, num) => acc * num),
+    '/': (operands) => operands.reduce((acc, num) => acc / num)
 }
 
-function getOperator() {
-    let answer = ' ';
+function getOperation(){
+    let operation = ' ';
 
     do {
-        answer = prompt('Enter + - * /')
-    } while (!isOperatorValid(answer))
+        operation = prompt('Enter operation')
+    } while (!isInputValid(operation))
 
-    return answer;
-}
-
-function isOperatorValid(operator) {
-    return operator === '+' ||
-           operator === '-' ||
-           operator === '*' ||
-           operator === '/'
-}
-
-
-function getNumbers() {
-    let numbers;
-    let value;
-
-    do {
-       value = prompt("Enter numbers");
-    } while (!isInputValid(value))
-
-    let arr = value.split(',');
-
-    numbers = arr.filter(function(number) {
-        return !isNaN(+number) && number % 2 !== 0;
-    });
-
-    return numbers.map( i => +i );
-
+    return operation;
 }
 
 function isInputValid(value) {
@@ -54,8 +20,18 @@ function isInputValid(value) {
            value !== null;
 }
 
+function findOperation(input) {
+    const operators = ['+', '-', '*', '/'];
+    return operators.find(operator => input.indexOf(operator) >= 0);
+}
 
-function getAction(operator, numbers) {
+function getOperands(input, operator) {
+    return input.split(operator)
+                .filter(number => !isNaN(+number))
+                .map(number => +number);
+}
+
+function getResult(operator, numbers) {
     return actions[operator](numbers);
 }
 
@@ -64,8 +40,8 @@ function showResult(numbers, operator, result) {
     return alert(`${numbers.join(` ${operator} `)} = ${result}`)
 }
 
-
-const operator = getOperator();
-const numbers = getNumbers();
-const result = getAction(operator, numbers);
+const userInput = getOperation()
+const operator = findOperation(userInput)
+const numbers = getOperands(userInput, operator)
+const result = getResult(operator, numbers);
 showResult(numbers, operator, result)
