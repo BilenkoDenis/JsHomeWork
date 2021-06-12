@@ -39,7 +39,7 @@ function onTaskClick(e) {
         const taskId = getTaskId(e.target);
 
         toggleTask(taskId);
-        
+
     }
 }
 
