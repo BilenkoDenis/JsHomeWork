@@ -19,6 +19,7 @@
             crossorigin="anonymous"
     />
     <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <script src="script.js" async></script>
     <title>Phonebook</title>
 </head>
 <body class="bg-dark">
@@ -30,39 +31,40 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr class="text-center">
-                            <th scope="col">First Name</th>
-                            <th scope="col">Second Name</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Phone Number</th>
+                            <th scope="col">Email</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
                         <tbody id="tbody"></tbody>
                     </table>
                 </div>
-                <div class="card-content">
-                    <div class="row">
-                        <div class="input-field col-3">
-                            <input type="text" id="firstName" />
-                            <label for="firstName">First Name</label>
-                        </div>
-                        <div class="input-field col-3">
-                            <input type="text" id="secondName" />
-                            <label for="secondName">Second Name</label>
-                        </div>
-                        <div class="input-field col-3">
-                            <input type="tel" id="phoneNumber" />
-                            <label for="phoneNumber">Phone Number</label>
-                        </div>
-                        <div class="row col-3 mt-3">
-                            <button class="btn btn-small">Add</button>
+                <form id="addContactForm">
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="input-field col-3">
+                                <input type="text" id="name" />
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="input-field col-3">
+                                <input type="tel" id="phoneNumber" />
+                                <label for="phoneNumber">Phone Number</label>
+                            </div>
+                            <div class="input-field col-3">
+                                <input type="email" id="email" name="email" />
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="row col-2 mt-2">
+                                <input class="btn btn-primary" type="submit" value="Add" />
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="./script.js"></script>
 </body>
 </html>
