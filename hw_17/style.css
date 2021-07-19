@@ -72,8 +72,11 @@ body {
 }
 .modal .modal_content .close_modal_window {
     color: white;
-    float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.close_modal_window {
+    height: 650px;
 }

@@ -4,15 +4,31 @@ const photoCollection = document.querySelector(`.photo-collection`);
 const pagination = document.querySelector(`.pagination`);
 const modal = document.querySelector(`.modal-item`);
 const photoItemTemplate = document.querySelector("#modalItemTemplate").innerHTML;
+const container = document.querySelector(`.container`);
 
 let photosList = [];
 
 photoCollection.addEventListener(`click`, onImageClick);
 pagination.addEventListener(`click`, onPaginationClick);
+container.addEventListener(`click`, onContainerClick);
+
 
 function onImageClick(e) {
     if (e.target.classList.contains(`photo`)) {
         getFullPicture(e.target.dataset.src);
+    }
+}
+
+function onPaginationClick(e) {
+    if (e.target.classList.contains(`page`)) {
+        getAlbumPhotos(e.target.id);
+        saveToLocalStorage(e.target.id);
+    }
+}
+
+function onContainerClick(e) {
+    if (e.target.closest(`.close_modal_window`)) {
+        e.target.closest(`.modal`).remove();
     }
 }
 
@@ -23,12 +39,7 @@ function generateModal(url) {
     return photoItemTemplate.replace("{{url}}", url);
 }
 
-function onPaginationClick(e) {
-    if (e.target.classList.contains(`page`)) {
-        getAlbumPhotos(e.target.id);
-        saveToLocalStorage(e.target.id);
-    }
-}
+
 
 init();
 
@@ -105,8 +116,9 @@ function saveToLocalStorage(pageId) {
 }
 function restoreFromLocalStorage() {
     const data = localStorage.getItem(`pageId`);
-    
+
     if (data !== null) {
         getAlbumPhotos(JSON.parse(data));
     }
 }
+
