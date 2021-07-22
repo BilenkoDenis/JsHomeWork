@@ -1,0 +1,33 @@
+.btn {
+    text-transform: uppercase;
+    color: #91eae4;
+    font-size: large;
+    background-color: saddlebrown;
+}
+.sticker {
+    width: 230px;
+    height: 200px;
+    font-weight: bold;
+    font-family: "sans-serif", Courier, monospace;
+    position: relative;
+    background-color: white;
+}
+.form-control {
+    resize: none;
+    font-size: 20px;
+    overflow: hidden;
+    height: 100%;
+}
+.remove-item {
+    position: absolute;
+    font-size: 40px;
+    right: -13px;
+    z-index: 1;
+    top: -23px;
+    cursor: pointer;
+}
+.form-control::placeholder {
+    color: grey;
+    opacity: 0.5;
+    font-size: 12px;
+}
