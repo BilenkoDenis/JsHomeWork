@@ -13,7 +13,8 @@ function fetchPhotos() {
     fetch(MAIN_URL)
         .then((resp) => resp.json())
         .then(setPhotos)
-        .then(renderPhotos);
+        .then(renderPhotos)
+        .then(() => container.fotorama());
 }
 
 function setPhotos(list) {
@@ -29,14 +30,14 @@ function renderPhoto(list) {
 }
 
 function createImg(photo) {
-    //let link = createLink(photo);
+    let link = createLink(photo);
     let img = $(`<img/>`, {
         src: photo.thumbnailUrl,
         alt: photo.title,
         id: photo.id,
     });
-    img.appendTo(container);
-    return img;
+    img.appendTo(link);
+    return link;
 }
 
 function createLink(photo) {
