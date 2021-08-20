@@ -3,6 +3,7 @@ import "../css/style.css";
 
 const URL = `wss://balls-fep.herokuapp.com/`;
 
+const $body = $(`body`);
 const $sizeEl = $("#size");
 const $colorEl = $("#color");
 const $menu = $(`#menu`);
@@ -27,7 +28,6 @@ function init() {
       onLoad(data);
     } else {
       update(data);
-      changeCoords();
     }
   };
 
@@ -36,12 +36,12 @@ function init() {
     console.log(`closed`);
   };
 
-  socket.onerror = (err) => {
+  socket.onerror = () => {
     alert(`disconected`);
   };
 }
 function send(msg) {
-  if (socket.readyState == WebSocket.OPEN) {
+  if (socket.readyState === WebSocket.OPEN) {
     socket.send(JSON.stringify(msg));
   }
 }
@@ -80,15 +80,15 @@ function getPayLoad() {
   };
 }
 
-$(`body`).on(`mousedown`, `#${idBall}`, onMouseDown);
+$body.on(`mousedown`, `#${idBall}`, onMouseDown);
 
-function onMouseDown(e) {
-  $(`body`).on(`mousemove`, `#${idBall}`, onMouseMove);
-  $(`body`).on(`mouseup`, `#${idBall}`, onMouseUp);
+function onMouseDown() {
+  $body.on(`mousemove`, `#${idBall}`, onMouseMove);
+  $body.on(`mouseup`, `#${idBall}`, onMouseUp);
 }
-function onMouseUp(e) {
-  $(`body`).off(`mousemove`, `#${idBall}`, onMouseMove);
-  $(`body`).off(`mouseup`, `#${idBall}`, onMouseUp);
+function onMouseUp() {
+  $body.off(`mousemove`, `#${idBall}`, onMouseMove);
+  $body.off(`mouseup`, `#${idBall}`, onMouseUp);
 }
 function onMouseMove(e) {
   let left = e.pageX;
@@ -102,7 +102,7 @@ function onMouseMove(e) {
   });
 }
 $menu.on(`change`, changeBallParams);
-function changeBallParams(e) {
+function changeBallParams() {
   let $ball = $(`#${idBall}`);
   $ball.css(`background`, $colorEl.val());
   $ball.css(`width`, $sizeEl.val());
